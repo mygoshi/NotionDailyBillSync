@@ -19,5 +19,6 @@ public class Log {
 
     public static void ERROR(String message) {
         System.out.println("[ERROR] " + message);
+        System.exit(-1);
     }
 }
