@@ -57,8 +57,11 @@ public class DataLoader {
                 }
                 String name = item[3].trim();
                 String amount = item[5].trim();
-                if(item[0].equals("支出")) {
+                if(item[0].trim().equals("支出")) {
                     amount = "-" + amount;
+                }
+                else if(item[0].trim().equals("其他")){
+                    continue;
                 }
                 String time = item[10].trim() + "+08";
                 String from = "支付宝";
