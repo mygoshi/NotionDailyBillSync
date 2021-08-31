@@ -77,14 +77,14 @@ public class DataLoader {
                 if (item[0].equals("交易时间")) {
                     continue;
                 }
-                String name = item[2] + " - " + item[3];
+                String name = item[2] + " - " + item[3].substring(1, item[3].length() - 1);
                 String amount = item[5].substring(1);
                 if(item[4].equals("支出")) {
                     amount = "-" + amount;
                 }
                 String time = item[0] + "+08";
                 String from = "微信";
-                String remarks = item[10].equals("/") ? "" : item[10];
+                String remarks = item[10].substring(1, item[10].length() - 1).equals("/") ? "" : item[10].substring(1, item[10].length() - 1);
                 String account = item[6].equals("/") ? "零钱" : item[6];
                 billData.add(new BillItem(name, amount, time, from, remarks, account,databaseID));
             }
