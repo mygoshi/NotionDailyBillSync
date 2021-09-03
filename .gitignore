@@ -4,3 +4,5 @@
 /.idea
 /*.iml
 /src/NotionTest.http
+/src/META-INF/MANIFEST.MF
+/src/TJUEcard.http
