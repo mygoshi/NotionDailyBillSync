@@ -12,10 +12,10 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 public class BillItem {
     @JSONField(name = "properties")
-    private BillProperties properties;
+    private final BillProperties properties;
 
     @JSONField(name = "parent")
-    private JSONObject parent;
+    private final JSONObject parent;
 
     public BillItem(String name, String amount, String time, String from, String remarks, String account,
                     String databaseID) {

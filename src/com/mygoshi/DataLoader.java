@@ -8,20 +8,31 @@
 package com.mygoshi;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.mygoshi.JSONObjects.BillItem;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class DataLoader {
 
+    private String secretKey;
+    private String notionVersion;
+    private String databaseID;
+    private String college;
+    private String ecardAuth;
+
+    public DataLoader() {
+        loadConfig();
+    }
+
     /**
      * Load and parse bill list.
      * @param path Path of .CSV file
-     * @param databaseID ID of bill list database in Notion
      * @return List of bill items.
      */
-    public static ArrayList<String> loadData(String path, String databaseID) {
+    public ArrayList<String> loadBillData(String path) {
         ArrayList<String[]> billDataRaw = new ArrayList<>();
         ArrayList<BillItem> billData = new ArrayList<>();
         try {
@@ -81,6 +92,10 @@ public class DataLoader {
                     continue;
                 }
                 String name = item[2] + " - " + item[3].substring(1, item[3].length() - 1);
+                if(name.contains("一卡通充值")) {
+                    // Skip depositing bill (included in ecard bill).
+                    continue;
+                }
                 String amount = item[5].substring(1);
                 if(item[4].equals("支出")) {
                     amount = "-" + amount;
@@ -97,5 +112,53 @@ public class DataLoader {
             billItemList.add(JSON.toJSONString(item));
         }
         return billItemList;
+    }
+
+    /**
+     * Load local config.
+     */
+    private void loadConfig() {
+        StringBuilder sb = new StringBuilder();
+        try{
+            File config = new File("config.json");
+            Reader reader = new InputStreamReader(new FileInputStream(config), StandardCharsets.UTF_8);
+            int ch;
+            while ((ch = reader.read()) != -1) {
+                sb.append((char) ch);
+            }
+            reader.close();
+        } catch (IOException e) {
+            Log.ERROR("Cannot find 'config.json'.");
+        }
+        parseConfig(sb.toString());
+    }
+
+    private void parseConfig(String config) {
+        JSONObject configJson = JSON.parseObject(config);
+        this.secretKey = configJson.getString("secret_key");
+        this.notionVersion = configJson.getString("notion_version");
+        this.databaseID = configJson.getString("database_id");
+        this.college = configJson.getString("college");
+        this.ecardAuth = configJson.getString("ecard_auth");
+    }
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public String getNotionVersion() {
+        return notionVersion;
+    }
+
+    public String getDatabaseID() {
+        return databaseID;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public String getEcardAuth() {
+        return ecardAuth;
     }
 }

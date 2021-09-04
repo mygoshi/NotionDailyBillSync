@@ -20,23 +20,14 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class Notion {
-    private final String secretKey;
-    private final String notionVersion;
-    private final String databaseID;
-
-    public Notion() {
-        String configText = readConfig();
-        JSONObject configJson = JSON.parseObject(configText);
-        this.secretKey = configJson.getString("secret_key");
-        this.notionVersion = configJson.getString("notion_version");
-        this.databaseID = configJson.getString("database_id");
-    }
 
     /**
      * Push a record to Notion database.
      * @param billData Data to upload in JSON format.
+     * @param secretKey Secret Key of Notion Integration.
+     * @param notionVersion Version of Notion.
      */
-    public void pushBill(String billData){
+    public void pushBill(String billData, String secretKey, String notionVersion){
         final HttpPost httpPost = new HttpPost("https://api.notion.com/v1/pages");
         Log.INFO("Uploading bill data please wait for a while...");
         httpPost.setHeader("Authorization", "Bearer " + secretKey);
@@ -62,32 +53,6 @@ public class Notion {
         catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Read local config.
-     * @return Config in String format.
-     */
-    private String readConfig() {
-        try{
-            File config = new File("config.json");
-            Reader reader = new InputStreamReader(new FileInputStream(config), StandardCharsets.UTF_8);
-            int ch;
-            StringBuilder sb = new StringBuilder();
-            while ((ch = reader.read()) != -1) {
-                sb.append((char) ch);
-            }
-            reader.close();
-            return sb.toString();
-
-        } catch (IOException e) {
-            Log.ERROR("Cannot find 'config.json'.");
-            return "";
-        }
-    }
-
-    public String getDatabaseID() {
-        return databaseID;
     }
 
 }
