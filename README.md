@@ -9,3 +9,4 @@
 # 联系方式
 
 Email: joshua.s.shi@outlook.com
+Blog: blog.mygoshi.top
