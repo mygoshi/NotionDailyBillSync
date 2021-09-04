@@ -10,4 +10,4 @@
 
 Email: joshua.s.shi@outlook.com
 
-Blog: [blog.mygoshi.top](https://mygoshi.top)
+Blog: [blog.mygoshi.top](https://blog.mygoshi.top)
