@@ -2,10 +2,10 @@
  * Copyright (c) 2021
  * User: Shuai
  * File: BillProperties.java
- * Date: 2021/08/30 22:20:30
+ * Date: 2021/08/31 09:31:31
  */
 
-package com.mygoshi.JSONObjects;
+package mygoshi.JSONObjects;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

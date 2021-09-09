@@ -2,12 +2,12 @@
  * Copyright (c) 2021
  * User: Shuai
  * File: Main.java
- * Date: 2021/08/31 09:18:31
+ * Date: 2021/09/04 15:53:04
  */
 
-package com.mygoshi;
+package mygoshi;
 
-import com.mygoshi.EcardQueryTJU.EcardQueryTJU;
+import mygoshi.EcardQueryTJU.EcardQueryTJU;
 
 import java.util.ArrayList;
 
