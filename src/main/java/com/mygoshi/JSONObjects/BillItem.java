@@ -2,10 +2,10 @@
  * Copyright (c) 2021
  * User: Shuai
  * File: BillItem.java
- * Date: 2021/09/03 11:21:03
+ * Date: 2021/09/09 21:09:09
  */
 
-package mygoshi.JSONObjects;
+package com.mygoshi.JSONObjects;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;

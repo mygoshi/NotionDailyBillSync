@@ -2,16 +2,16 @@
  * Copyright (c) 2021
  * User: Shuai
  * File: EcardQueryTJU.java
- * Date: 2021/09/04 15:41:04
+ * Date: 2021/09/09 21:09:09
  */
 
-package mygoshi.EcardQueryTJU;
+package com.mygoshi.EcardQueryTJU;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import mygoshi.JSONObjects.BillItem;
-import mygoshi.Log;
+import com.mygoshi.JSONObjects.BillItem;
+import com.mygoshi.Log;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;

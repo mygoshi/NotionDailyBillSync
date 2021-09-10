@@ -2,10 +2,10 @@
  * Copyright (c) 2021
  * User: Shuai
  * File: Log.java
- * Date: 2021/08/31 10:42:31
+ * Date: 2021/09/09 21:09:09
  */
 
-package mygoshi;
+package com.mygoshi;
 
 public class Log {
     //@TODO Print with color.

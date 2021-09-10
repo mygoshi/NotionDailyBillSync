@@ -2,14 +2,14 @@
  * Copyright (c) 2021
  * User: Shuai
  * File: DataLoader.java
- * Date: 2021/09/04 15:53:04
+ * Date: 2021/09/09 21:09:09
  */
 
-package mygoshi;
+package com.mygoshi;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import mygoshi.JSONObjects.BillItem;
+import com.mygoshi.JSONObjects.BillItem;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
