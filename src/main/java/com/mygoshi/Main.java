@@ -12,6 +12,8 @@ import com.mygoshi.EcardQueryTJU.EcardQueryTJU;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -69,10 +71,21 @@ public class Main {
 
     private static void pushEcardBill() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please type start date...");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);
+        String defaultDate = "" + calendar.get(Calendar.YEAR) +
+                (calendar.get(Calendar.MONTH) + 1 < 10 ? "0" : "") + (calendar.get(Calendar.MONTH) + 1) +
+                (calendar.get(Calendar.DATE) < 10 ? "0" : "") + calendar.get(Calendar.DATE);
+        System.out.println("Please type start date...(Default: " + defaultDate + ")");
         String startTime = scanner.nextLine();
-        System.out.println("Please type end date...");
+        if (startTime.equals("")) {
+            startTime = defaultDate;
+        }
+        System.out.println("Please type end date...(Default: " + defaultDate + ")");
         String stopTime = scanner.nextLine();
+        if (stopTime.equals("")) {
+            stopTime = defaultDate;
+        }
         System.out.println("Please type the auth token...");
         String authToken = scanner.nextLine();
         Notion notion = new Notion();
